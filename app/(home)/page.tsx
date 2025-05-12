@@ -74,6 +74,15 @@ export default async function HomePage() {
                         <ProductSlider title="Today's Deals" products={todaysDeals} />
                     </CardContent>
                 </Card>
+                <Card className='w-full rounded-none'>
+                    <CardContent className='p-4 items-center gap-3'>
+                        <ProductSlider
+                            title='Best Selling Products'
+                            products={bestSellingProducts}
+                        
+                        />
+                    </CardContent>
+                </Card>
             </div>
         </>
     )
