@@ -3,7 +3,7 @@
 import { connectToDatabase } from '@/lib/db'
 import Product, { IProduct } from '@/lib/db/models/product.model'
 
-
+//GET ALL CATEGORIES
 export async function getAllCategories() {
     await connectToDatabase()
     const categories = await Product.find({ isPublished: true }).distinct(
@@ -12,6 +12,7 @@ export async function getAllCategories() {
     return categories
 }
 
+//GET PRODUCTS FOR CARD
 export async function getProductsForCard({
     tag,
     limit = 4,
@@ -36,6 +37,7 @@ export async function getProductsForCard({
         image: string
     }[]
 }
+
 // GET PRODUCTS BY TAG
 export async function getProductsByTag({
     tag,
@@ -62,6 +64,7 @@ export async function getProductBySlug(slug: string) {
     return JSON.parse(JSON.stringify(product)) as IProduct
 }
 
+//GET ALL TAGS
 export async function getAllTags() {
     const tags = await Product.aggregate([
         { $unwind: '$tags' },
