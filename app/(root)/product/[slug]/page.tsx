@@ -10,6 +10,8 @@ import { Separator } from '@/components/ui/separator'
 import ProductSlider from '@/components/shared/product/product-slider'
 import BrowsingHistoryList from '@/components/shared/browsing-history-list'
 import AddToBrowsingHistory from '@/components/shared/product/add-to-browsing-history'
+import AddToCart from '@/components/shared/product/add-to-cart'
+import { generateId, round2 } from '@/lib/utils'
 
 export async function generateMetadata(props: {
     params: Promise<{ slug: string }>
@@ -47,7 +49,7 @@ export default async function ProductDetails(props: {
 
     return (
         <div>
-            <AddToBrowsingHistory id={product._id} category={product.category}/>
+            <AddToBrowsingHistory id={product._id} category={product.category} />
             <section>
                 <div className='grid grid-cols-1 md:grid-cols-5  '>
                     <div className='col-span-2'>
@@ -108,6 +110,26 @@ export default async function ProductDetails(props: {
                                         Out of Stock
                                     </div>
                                 )}
+
+                                {product.countInStock !== 0 && (
+                                    <div className='flex justify-center items-center'>
+                                        <AddToCart
+                                            item={{
+                                                clientId: generateId(),
+                                                product: product._id,
+                                                countInStock: product.countInStock,
+                                                name: product.name,
+                                                slug: product.slug,
+                                                category: product.category,
+                                                price: round2(product.price),
+                                                quantity: 1,
+                                                image: product.images[0],
+                                                size: size || product.sizes[0],
+                                                color: color || product.colors[0],
+                                            }}
+                                        />
+                                    </div>
+                                )}
                             </CardContent>
                         </Card>
                     </div>
@@ -120,7 +142,7 @@ export default async function ProductDetails(props: {
                 />
             </section>
             <section>
-                <BrowsingHistoryList className='mt-10'/>
+                <BrowsingHistoryList className='mt-10' />
             </section>
         </div>
     )

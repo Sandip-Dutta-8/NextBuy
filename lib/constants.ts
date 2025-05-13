@@ -6,3 +6,4 @@ export const COLORS = ['Gold', 'Green', 'Red']
 export const THEMES = ['Light', 'Dark', 'System']
 
 export const PAGE_SIZE = Number(9) 
+export const FREE_SHIPPING_MIN_PRICE=Number(35)
