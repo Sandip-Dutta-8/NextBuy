@@ -64,7 +64,7 @@ export default function AddToCart({
             </Select>
 
             <Button
-                className='rounded-full w-full'
+                className='rounded-full w-full cursor-pointer'
                 type='button'
                 onClick={async () => {
                     try {
@@ -91,7 +91,7 @@ export default function AddToCart({
                         })
                     }
                 }}
-                className='w-full rounded-full '
+                className='w-full rounded-full cursor-pointer'
             >
                 Buy Now
             </Button>

@@ -85,7 +85,7 @@ export default function CartAddItem({ itemId }: { itemId: string }) {
                                 </div>
                                 <Link
                                     href='/checkout'
-                                    className={cn(buttonVariants(), 'rounded-full w-full')}
+                                    className={cn(buttonVariants(), 'rounded-full w-full cursor-pointer')}
                                 >
                                     Proceed to checkout (
                                     {items.reduce((a, c) => a + c.quantity, 0)} items)
@@ -94,7 +94,7 @@ export default function CartAddItem({ itemId }: { itemId: string }) {
                                     href='/cart'
                                     className={cn(
                                         buttonVariants({ variant: 'outline' }),
-                                        'rounded-full w-full'
+                                        'rounded-full w-full cursor-pointer'
                                     )}
                                 >
                                     Go to Cart
