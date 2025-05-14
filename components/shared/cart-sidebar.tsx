@@ -15,36 +15,29 @@ import {
 } from '../ui/select'
 import { TrashIcon } from 'lucide-react'
 import ProductPrice from './product/product-price'
-import { useLocale, useTranslations } from 'next-intl'
+import { FREE_SHIPPING_MIN_PRICE } from '@/lib/constants'
 
 export default function CartSidebar() {
     const {
         cart: { items, itemsPrice },
+        updateItem,
+        removeItem
     } = useCartStore()
-    const {
-        setting: {
-            common: { freeShippingMinPrice },
-        },
-    } = useSettingStore()
 
-    const t = useTranslations()
-
-    const locale = useLocale()
     return (
         <div className='w-32 overflow-y-auto'>
             <div
-                className={`w-32 fixed  h-full ${getDirection(locale) === 'rtl' ? 'border-r' : 'border-l'
-                    }`}
+                className={`w-32 fixed  h-full border-l`}
             >
                 <div className='p-2 h-full flex flex-col gap-2 justify-center items-center'>
                     <div className='text-center space-y-2'>
-                        <div> {t('Cart.Subtotal')}</div>
+                        <div>Subtotal</div>
                         <div className='font-bold '>
                             <ProductPrice price={itemsPrice} plain />
                         </div>
-                        {itemsPrice > freeShippingMinPrice && (
+                        {itemsPrice > FREE_SHIPPING_MIN_PRICE && (
                             <div className=' text-center text-xs'>
-                                {t('Cart.Your order qualifies for FREE Shipping')}
+                                Your order qualifies for FREE Shipping
                             </div>
                         )}
 
@@ -55,7 +48,7 @@ export default function CartSidebar() {
                             )}
                             href='/cart'
                         >
-                            {t('Cart.Go to Cart')}
+                            Go to Cart
                         </Link>
                         <Separator className='mt-3' />
                     </div>
