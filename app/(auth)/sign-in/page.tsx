@@ -6,6 +6,7 @@ import SeparatorWithOr from '@/components/shared/separator-or'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import CredentialsSignInForm from './credentials-signin-form'
 import { Button } from '@/components/ui/button'
+import { GoogleSignInForm } from './google-signin-form'
 
 export const metadata: Metadata = {
     title: 'Sign In',
@@ -34,6 +35,10 @@ export default async function SignInPage(props: {
                 <CardContent>
                     <div>
                         <CredentialsSignInForm />
+                    </div>
+                    <SeparatorWithOr />
+                    <div className='mt-4'>
+                        <GoogleSignInForm />
                     </div>
                 </CardContent>
             </Card>
