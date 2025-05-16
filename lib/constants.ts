@@ -7,3 +7,44 @@ export const THEMES = ['Light', 'Dark', 'System']
 
 export const PAGE_SIZE = Number(9) 
 export const FREE_SHIPPING_MIN_PRICE=Number(35)
+
+export const AVAILABLE_PAYMENT_METHOD = [
+    {
+        name: "PayPal",
+        commission: 0,
+        isDefault: true
+    },
+    {
+        name: "Stripe",
+        commission: 0,
+        isDefault: false
+    },
+    {
+        name: "Cash on Delivery",
+        commission: 0,
+        isDefault: false
+    },
+]
+
+export const DEFAULT_PAYEMENT_METHOD = 'PayPal'
+
+export const AVAILABLE_DELIVERY_DATE = [
+    {
+        name: "Tomorrow",
+        daysToDeliver: 1,
+        shippingPrice: 12.9,
+        freeShippingMinPrice: 0,
+    },
+    {
+        name: "Next 3 days",
+        daysToDeliver: 3,
+        shippingPrice: 6.9,
+        freeShippingMinPrice: 0,
+    },
+    {
+        name: "Next 5 days",
+        daysToDeliver: 5,
+        shippingPrice: 4.9,
+        freeShippingMinPrice: 35,
+    }
+]
