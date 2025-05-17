@@ -12,6 +12,9 @@ import BrowsingHistoryList from '@/components/shared/browsing-history-list'
 import AddToBrowsingHistory from '@/components/shared/product/add-to-browsing-history'
 import AddToCart from '@/components/shared/product/add-to-cart'
 import { generateId, round2 } from '@/lib/utils'
+import RatingSummary from '@/components/shared/product/rating-summary'
+import ReviewList from './review-list'
+import { auth } from '@/auth'
 
 export async function generateMetadata(props: {
     params: Promise<{ slug: string }>
@@ -40,6 +43,8 @@ export default async function ProductDetails(props: {
     const { slug } = params
 
     const product = await getProductBySlug(slug)
+
+    const session = await auth()
 
     const relatedProducts = await getRelatedProductsByCategory({
         category: product.category,
@@ -90,6 +95,12 @@ export default async function ProductDetails(props: {
                                 {product.description}
                             </p>
                         </div>
+                        <RatingSummary
+                            avgRating={product.avgRating}
+                            numReviews={product.numReviews}
+                            asPopover
+                            ratingDistribution={product.ratingDistribution}
+                        />
                     </div>
                     <div>
                         <Card>
@@ -134,6 +145,12 @@ export default async function ProductDetails(props: {
                         </Card>
                     </div>
                 </div>
+            </section>
+            <section className='mt-10'>
+                <h2 className='h2-bold mb-2' id='reviews'>
+                    Customer Reviews
+                </h2>
+                <ReviewList product={product} userId={session?.user.id} />
             </section>
             <section className='mt-10'>
                 <ProductSlider
