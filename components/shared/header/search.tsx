@@ -8,10 +8,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from '../../ui/select'
+import { getAllCategories } from '@/lib/actions/product.actions'
 
-const categories = ["stationary", "office"]
 
 export default async function Search() {
+    
+    const categories = await getAllCategories()
+
     return (
         <form action='/search' method='GET' className='flex items-stretch h-10'>
             <Select name='category'>
