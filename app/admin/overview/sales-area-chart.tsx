@@ -53,8 +53,8 @@ const CustomXAxisTick: React.FC<any> = ({ x, y, payload }) => {
     )
 }
 const STROKE_COLORS: { [key: string]: { [key: string]: string } } = {
-    Red: { light: '#980404', dark: '#ff3333' },
-    Green: { light: '#015001', dark: '#06dc06' },
+    Blue: { light: '#3b82f6', dark: '#1e40af' },
+    Violet: { light: '#8b5cf6', dark: '#5b21b6' },
     Gold: { light: '#ac9103', dark: '#f1d541' },
 }
 
