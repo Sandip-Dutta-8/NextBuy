@@ -2,8 +2,12 @@ import Link from 'next/link'
 import Menu from './menu'
 import Search from './search'
 import data from '@/lib/data'
+import Sidebar from './sidebar'
+import { getAllCategories } from '@/lib/actions/product.actions'
 
 export default async function Header() {
+
+    const categories = await getAllCategories()
 
     return (
         <header className='bg-black  text-white'>
@@ -29,6 +33,7 @@ export default async function Header() {
             </div>
             <div className='flex items-center px-3 mb-[1px]  bg-gray-800'>
                 <div className='flex items-center flex-wrap gap-3 overflow-hidden   max-h-[42px]'>
+                    <Sidebar categories={categories} />
                     {data.headerMenus.map((menu) => (
                         <Link
                             href={menu.href}
