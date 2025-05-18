@@ -43,6 +43,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
     return null
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomXAxisTick: React.FC<any> = ({ x, y, payload }) => {
     return (
         <text x={x} y={y + 10} textAnchor='left' fill='#666' className='text-xs'>
@@ -57,6 +58,7 @@ const STROKE_COLORS: { [key: string]: { [key: string]: string } } = {
     Gold: { light: '#ac9103', dark: '#f1d541' },
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SalesAreaChart({ data }: { data: any[] }) {
     const { theme } = useTheme()
     const { cssColors, color } = useColorStore(theme)

@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes'
 import React from 'react'
 import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SalesCategoryPieChart({ data }: { data: any[] }) {
     const { theme } = useTheme()
     const { cssColors } = useColorStore(theme)
@@ -17,6 +18,7 @@ export default function SalesCategoryPieChart({ data }: { data: any[] }) {
         innerRadius,
         outerRadius,
         index,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }: any) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5
         const x = cx + radius * Math.cos(-midAngle * RADIAN)
