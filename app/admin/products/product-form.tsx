@@ -25,6 +25,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { toSlug } from '@/lib/utils'
 import { IProductInput } from '@/types'
 import { toast } from 'sonner'
+import { Trash } from 'lucide-react'
 
 // Define types for upload response and error
 interface UploadResponse {
@@ -280,15 +281,30 @@ const ProductForm = ({ type, product, productId }: ProductFormProps) => {
                                 <Card>
                                     <CardContent className='space-y-2 mt-2 min-h-48'>
                                         <div className='flex flex-wrap justify-start items-center gap-2'>
-                                            {images.map((image: string, index: number) => (
-                                                <Image
-                                                    key={`${image}-${index}`}
-                                                    src={image}
-                                                    alt='product image'
-                                                    className='w-20 h-20 object-cover object-center rounded-sm'
-                                                    width={100}
-                                                    height={100}
-                                                />
+                                            {images.map((image: string) => (
+                                                <Card key={image} className='relative '>
+                                                    <Image
+                                                        src={image}
+                                                        alt='product image'
+                                                        className='w-36 h-36 object-cover object-center rounded-sm'
+                                                        width={100}
+                                                        height={100}
+                                                    />
+                                                    <Button
+                                                        variant={'destructive'}
+                                                        className='absolute top-1 right-1'
+                                                        type='button'
+                                                        size='icon'
+                                                        onClick={() => {
+                                                            form.setValue(
+                                                                'images',
+                                                                images.filter((img) => img !== image)
+                                                            )
+                                                        }}
+                                                    >
+                                                        <Trash />
+                                                    </Button>
+                                                </Card>
                                             ))}
                                             <FormControl>
                                                 <UploadButton
