@@ -86,6 +86,7 @@ export const OrderItemSchema = z.object({
     size: z.string().optional(),
     color: z.string().optional(),
 })
+
 export const ShippingAddressSchema = z.object({
     fullName: z.string().min(1, 'Full name is required'),
     street: z.string().min(1, 'Address is required'),
@@ -188,6 +189,7 @@ export const UserSignInSchema = z.object({
     email: Email,
     password: Password,
 })
+
 export const UserSignUpSchema = UserSignInSchema.extend({
     name: UserName,
     confirmPassword: Password,
