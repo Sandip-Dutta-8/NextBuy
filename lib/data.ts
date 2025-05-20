@@ -1107,13 +1107,6 @@ const data = {
             isPublished: true,
         },
         {
-            title: 'Best Deals on Wrist Watches',
-            buttonCaption: 'See More',
-            image: '/images/banner2.jpg',
-            url: '/search?category=Wrist Watches',
-            isPublished: true,
-        },
-        {
             title: 'Best Deals on Office supplies',
             buttonCaption: 'See More',
             image: '/images/banner3.png',
